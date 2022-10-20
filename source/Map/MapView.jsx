@@ -1,16 +1,13 @@
-import React from "react";
-import { useState } from "react";
+/* eslint-disable react/jsx-no-literals */
+import React, { useState } from "react";
 import { StyleSheet, View, Button, TextInput } from "react-native";
 import { WebView } from "react-native-webview";
+
 import MapTemplate from "./MapTemplate";
 
-export default function App() {
-  let webRef = undefined;
-  let [mapCenter, setMapCenter] = useState("-121.913, 37.361");
-  const run = `
-      document.body.style.backgroundColor = 'blue';
-      true;
-    `;
+export default function MapView() {
+  let webRef;
+  const [mapCenter, setMapCenter] = useState("-121.913, 37.361");
 
   const onButtonClick = () => {
     const [lng, lat] = mapCenter.split(",");
@@ -24,15 +21,13 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.buttons}>
-        <TextInput
-          style={styles.textInput}
-          onChangeText={setMapCenter}
-          value={mapCenter}
-        ></TextInput>
-        <Button title="Set Center" onPress={onButtonClick}></Button>
+        <TextInput style={styles.textInput} onChangeText={setMapCenter} value={mapCenter} />
+        <Button title="Set Center" onPress={onButtonClick} />
       </View>
       <WebView
-        ref={(r) => (webRef = r)}
+        ref={(r) => {
+          webRef = r;
+        }}
         onMessage={handleMapEvent}
         style={styles.map}
         originWhitelist={["*"]}

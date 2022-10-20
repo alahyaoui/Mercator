@@ -1,4 +1,4 @@
-const TOMTOM_MAP_API_KEY: String | undefined = process.env.TOMTOM_MAP_API_KEY
+const { TOMTOM_MAP_API_KEY } = process.env;
 
 export default `
 <div>
