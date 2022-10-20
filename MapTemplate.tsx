@@ -1,5 +1,4 @@
-// TODO initialize with .env TOMTOM_MAP_API_KEY
-const TOMTOM_MAP_API_KEY = ""
+const TOMTOM_MAP_API_KEY: String | undefined = process.env.TOMTOM_MAP_API_KEY
 
 export default `
 <div>
