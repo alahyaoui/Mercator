@@ -1,0 +1,118 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["react", "react-native", "react-hooks", "@typescript-eslint", "prettier", "import"],
+  "env": {
+    "es2021": true,
+    "es6": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "airbnb-typescript",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "overrides": [],
+  "rules": {
+    "prettier/prettier": "error",
+    // Disable styles warnings
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "error", // Checks effect dependencies. see README.md#Eslint rule react-hooks/exhaustive-deps for helpful links
+    // imports with aliases
+    "module-resolver/use-alias": 0,
+    "import/order": [
+      2,
+      {
+        "groups": ["builtin", "external", "index", "sibling", "parent", "internal"],
+        "pathGroups": [
+          {
+            "pattern": "react*",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "#libs/*",
+            "group": "external",
+            "position": "after"
+          },
+          {
+            "pattern": "#*",
+            "group": "internal"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc"
+        }
+      }
+    ],
+    "no-undef": 0,
+    "no-unused-vars": [
+      2,
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "no-duplicate-imports": [
+      "error",
+      {
+        "includeExports": false
+      }
+    ],
+    // React section. For documentation, see
+    // https://github.com/yannickcr/eslint-plugin-react
+    "react/jsx-boolean-value": [2, "always"],
+    "react/jsx-key": 2,
+    // See: https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
+    "react/jsx-no-bind": [
+      2,
+      {
+        "allowArrowFunctions": true,
+        "allowBind": false
+      }
+    ],
+    "react/jsx-no-duplicate-props": [
+      2,
+      {
+        "ignoreCase": true
+      }
+    ],
+    "react/jsx-no-literals": 2, // May help us enforce localisation
+    "react/jsx-no-undef": 2,
+    "react/jsx-pascal-case": 2,
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    // See: https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-did-mount-set-state.md
+    "react/no-did-mount-set-state": [2],
+    "react/no-did-update-set-state": [2],
+    "react/no-direct-mutation-state": 2,
+    "react/no-is-mounted": 2,
+    "react/no-unknown-property": 2,
+    "react/no-unused-prop-types": 2,
+    "react/no-string-refs": 2,
+    "react/prefer-es6-class": [2, "always"],
+    // See: https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prop-types.md
+    "react/prop-types": 0,
+    "react/react-in-jsx-scope": 2,
+    "react/self-closing-comp": 2,
+    "react-native/no-unused-styles": 2,
+    "no-console": 2
+  }
+}
