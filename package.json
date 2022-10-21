@@ -10,7 +10,9 @@
     "lint": "eslint --cache 'source/**/*.{js,jsx,ts,tsx}'",
     "lint-fix": "npm run lint -- --fix",
     "prettier": "prettier --check 'source/**/*.{js,jsx,ts,tsx}'",
-    "prettier-fix": "prettier --check 'source/**/*.{js,jsx,ts,tsx}' --write"
+    "prettier-fix": "prettier --check 'source/**/*.{js,jsx,ts,tsx}' --write",
+    "checks": "npm run lint && npm run prettier",
+    "prepush": "npm run checks"
   },
   "dependencies": {
     "expo": "~46.0.16",
@@ -18,7 +20,6 @@
     "react": "18.1.0",
     "react-dom": "18.0.0",
     "react-native": "0.70.3",
-    "react-native-config": "^1.4.11",
     "react-native-web": "~0.18.7",
     "react-native-webview": "11.23.0"
   },
@@ -27,8 +28,8 @@
     "@babel/eslint-parser": "^7.19.1",
     "@types/react": "~18.0.14",
     "@types/react-native": "~0.69.1",
-    "@typescript-eslint/eslint-plugin": "^5.13.0",
-    "@typescript-eslint/parser": "^5.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
     "babel-plugin-inline-dotenv": "^1.7.0",
     "eslint": "^8.25.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -37,7 +38,6 @@
     "eslint-config-standard-with-typescript": "^23.0.0",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-jsx-a11y": "^6.6.1",
-    "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.31.10",
