@@ -12,6 +12,7 @@
     "prettier": "prettier --check 'source/**/*.{js,jsx,ts,tsx}'",
     "prettier-fix": "prettier --check 'source/**/*.{js,jsx,ts,tsx}' --write",
     "checks": "npm run lint && npm run prettier",
+    "fix": "npm run lint-fix && npm run prettier-fix",
     "prepare": "husky install"
   },
   "dependencies": {
