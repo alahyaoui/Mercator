@@ -12,12 +12,7 @@
     "prettier": "prettier --check 'source/**/*.{js,jsx,ts,tsx}'",
     "prettier-fix": "prettier --check 'source/**/*.{js,jsx,ts,tsx}' --write",
     "checks": "npm run lint && npm run prettier",
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm run prettier",
-      "pre-push": "npm run checks"
-    }
+    "prepare": "husky install"
   },
   "dependencies": {
     "expo": "~46.0.16",
