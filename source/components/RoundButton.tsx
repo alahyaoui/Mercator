@@ -8,7 +8,7 @@ import shine from "./assets/Shine.png";
 export type RoundButtonProps = {
   onPress?: () => void;
   onLongPress?: () => void;
-  disabled?: boolean;
+  isDisabled?: boolean;
   underlayColor?: string;
   children?: React.ReactNode;
 };
@@ -16,16 +16,16 @@ export type RoundButtonProps = {
 RoundButton.defaultProps = {
   onPress: () => {},
   onLongPress: () => {},
-  disabled: false,
+  isDisabled: false,
   underlayColor: "#ffffff",
   children: {},
 };
 
 export function RoundButton(props: RoundButtonProps) {
-  const { onPress, onLongPress, disabled, underlayColor, children } = props;
-  const [pressed, setPressed] = useState(false);
+  const { onPress, onLongPress, isDisabled, underlayColor, children } = props;
+  const [isPressed, setIsPressed] = useState(false);
 
-  const styles = generateStyle(pressed, disabled);
+  const styles = generateStyle(isPressed, !!isDisabled);
 
   return (
     <Androw style={styles.container}>
@@ -34,10 +34,10 @@ export function RoundButton(props: RoundButtonProps) {
         delayLongPress={Platform.OS === "android" ? 500 : Number.MAX_VALUE}
         onLongPress={() => onLongPress && onLongPress()}
         style={styles.innerContainer}
-        disabled={disabled}
+        disabled={isDisabled}
         underlayColor={underlayColor}
-        onShowUnderlay={() => setPressed(true)}
-        onHideUnderlay={() => setPressed(false)}
+        onShowUnderlay={() => setIsPressed(true)}
+        onHideUnderlay={() => setIsPressed(false)}
       >
         {children}
       </TouchableHighlight>
@@ -48,7 +48,7 @@ export function RoundButton(props: RoundButtonProps) {
   );
 }
 
-const generateStyle = (pressed: boolean, disabled: boolean) => {
+const generateStyle = (isPressed: boolean, isDisabled: boolean) => {
   const size = 64;
   const halfSize = size / 2;
 
@@ -58,15 +58,15 @@ const generateStyle = (pressed: boolean, disabled: boolean) => {
       alignItems: "center",
       height: size,
       width: size,
-      elevation: pressed ? 0 : 5, // Android
+      elevation: isPressed ? 0 : 5, // Android
       shadowColor: "#000000",
-      shadowOffset: pressed ? { width: 0, height: 0 } : { width: 0, height: 1 },
-      shadowOpacity: pressed ? 0 : 2, // iOS
-      shadowRadius: pressed ? 0 : 1,
+      shadowOffset: isPressed ? { width: 0, height: 0 } : { width: 0, height: 1 },
+      shadowOpacity: isPressed ? 0 : 2, // iOS
+      shadowRadius: isPressed ? 0 : 1,
       margin: 2, // Androw shadow fix
     },
     innerContainer: {
-      backgroundColor: disabled ? "#c2c6ca" : "#f3f4f6",
+      backgroundColor: isDisabled ? "#c2c6ca" : "#f3f4f6",
       alignItems: "center",
       justifyContent: "center",
       width: size,
